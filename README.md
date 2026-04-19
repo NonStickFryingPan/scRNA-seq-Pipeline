@@ -17,7 +17,7 @@
 
 ## Overview
 
-This pipeline processes 10x Chromium v3 scRNA-seq FASTQ files into a filtered, high-quality gene × cell count matrix. It uses **RNA STARsolo** as a drop-in replacement for the Cell Ranger pipeline — significantly faster with equivalent output. Cell filtering is handled by **DropletUtils**, using both a Cell Ranger-equivalent default method and a custom EmptyDrops approach for comparison.
+This pipeline processes 10x Chromium v3 scRNA-seq FASTQ files into a filtered, high-quality gene × cell count matrix. It uses **RNA STARsolo** as a drop-in replacement for the Cell Ranger pipeline — significantly faster with equivalent output. Cell filtering is handled by **DropletUtils**.
 
 **Sample:** 1k PBMCs from a healthy donor (10x Genomics v3 chemistry)  
 **Subsampled to:** ~300 cells for tutorial purposes
