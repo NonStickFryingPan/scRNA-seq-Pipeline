@@ -35,10 +35,6 @@ This pipeline processes 10x Chromium v3 scRNA-seq FASTQ files into a filtered, h
 | `Homo_sapiens.GRCh37.75.gtf` | Gene annotation |
 | `3M-february-2018.txt.gz` | 10x cell barcode whitelist (~3.7M barcodes) |
 
-> Source: [Zenodo 3457880](https://zenodo.org/record/3457880)
-
-**Chemistry confirmed:** Chromium **v3** — R1 reads are 28 bp (16 bp cell barcode + 12 bp UMI). v2 reads are 26 bp (16 bp CB + 10 bp UMI).
-
 ---
 
 ## Pipeline
