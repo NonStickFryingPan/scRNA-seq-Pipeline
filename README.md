@@ -10,7 +10,7 @@
 [![10x Chromium](https://img.shields.io/badge/Platform-10x%20Chromium%20v3-f59e0b?style=flat-square)](https://www.10xgenomics.com/)
 [![Genome](https://img.shields.io/badge/Reference-hg19%20GRCh37-7c3aed?style=flat-square)](https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.13/)
 
-[Overview](#overview) • [Dataset](#dataset) • [Pipeline](#pipeline) • [Tools & Outputs](#tools--outputs) • [Key Results](#key-results) • [References](#references)
+[Overview](#overview) • [Dataset](#dataset) • [Pipeline](#pipeline) • [Upstream Analysis](#upstream-analysis-galaxy) • [Downstream Analysis](#downstream-analysis-python--scanpy) • [Results & Key Findings](#results--key-findings) • [References](#references)
 
 </div>
 
