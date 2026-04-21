@@ -168,6 +168,66 @@ Emulates the Cell Ranger filtering approach. Retains barcodes above a UMI count 
 
 ---
 
+## Downstream Analysis (Python / Scanpy)
+ 
+The filtered Galaxy matrix (`matrix.mtx` + `genes.tsv` + `barcodes.tsv`) was imported into Python as an **AnnData** object for biological interpretation.
+ 
+### AnnData Structure
+ 
+| Slot | Contains |
+|------|---------|
+| `.X` | Gene expression count matrix (cells × genes) |
+| `.obs` | Cell metadata — cluster labels, QC metrics |
+| `.var` | Gene metadata — names, highly variable flags |
+| `.obsm / .obsp` | PCA coordinates, UMAP layouts, neighborhood graphs |
+ 
+All slots stay synchronized — filtering a cell from `.X` removes it from `.obs` and `.obsm` automatically.
+ 
+### Workflow
+ 
+**1. Load & Format** — Imported Galaxy files into AnnData using Human Gene Symbols instead of raw Ensembl IDs.
+ 
+**2. QC Filtering** — Removed empty droplets (too few genes) and dying cells (high mitochondrial expression). QC threshold lowered to **100 genes** (vs. the standard 200) to preserve cells in the small 252-cell dataset.
+ 
+**3. Normalization** — Total counts per cell normalized to a common depth, followed by log transformation. Scanpy identified **highly variable genes** driving cell identity differences.
+ 
+**4. Dimensionality Reduction** — PCA compressed the gene space; UMAP projected cells into 2D, placing transcriptionally similar cells near each other.
+ 
+**5. Clustering & Annotation** — Leiden algorithm clustered cells at resolution 0.5 (kept low given only 252 cells — higher resolution would produce clusters of 2–3 cells). Clusters annotated using marker gene expression and **CellTypist** (automated ML). Identified: **Lymphocytes** and **Myeloid cells**.
+ 
+### Dataset Scale Differences
+ 
+The reference tutorial used 8,785 cells × 36,601 genes. Our Galaxy output was 252 cells × 2,392 genes.
+
+### Final Results Summary
+
+| Metric | Value |
+| :--- | :--- |
+| Initial Cell Count | 252 |
+| Final Cell Count (Post-QC) | 248 |
+| Total Genes in Dataset | 2,392 |
+| Median Genes per Cell | ~145 |
+| Identified Populations | Lymphocytes (T-Cells), Myeloid (Monocytes) |
+| Principal Components (PCs) | 50 |
+| Software Stack | Galaxy, Scanpy, CellTypist, AnnData |
+
+### Key Findings
+
+**1. Population Diversity**
+Despite the small sample size of 252 cells, the UMAP visualization revealed two very distinct biological populations. The largest group consists of Lymphocytes, while a smaller, separate cluster represents Myeloid cells.
+
+**2. Marker Gene Verification**
+Cluster 1 was identified as Myeloid/Monocyte through the high expression of the CYBB and SAT1 genes. Cluster 0 showed very high levels of ribosomal genes (RPL and RPS), which is a common characteristic of Lymphocytes.
+
+**3. Data Sparsity and QC**
+The sequencing depth was relatively shallow with a median of 145 genes per cell. This required a permissive filtering strategy to keep the dataset large enough for meaningful clustering. 
+
+**4. Mitochondrial Content**
+The analysis showed 0% mitochondrial expression across all cells. This indicates that these genes were likely removed during the upstream Galaxy processing or were not captured during sequencing.
+
+**5. AnnData Portability**
+The entire analysis history, from raw counts to final UMAP coordinates and cell labels, was successfully compressed into a single .h5ad AnnData file. This ensures the project is fully portable and easy for others to explore.
+
 ## References
 
 - Dobin et al. (2013). STAR: ultrafast universal RNA-seq aligner. *Bioinformatics*
