@@ -10,7 +10,7 @@
 [![10x Chromium](https://img.shields.io/badge/Platform-10x%20Chromium%20v3-f59e0b?style=flat-square)](https://www.10xgenomics.com/)
 [![Genome](https://img.shields.io/badge/Reference-hg19%20GRCh37-7c3aed?style=flat-square)](https://www.ncbi.nlm.nih.gov/assembly/GCF_000001405.13/)
 
-[Overview](#overview) • [Dataset](#dataset) • [Pipeline](#pipeline) • [Upstream Analysis](#upstream-analysis-galaxy) • [Downstream Analysis](#downstream-analysis-python--scanpy) • [Results & Key Findings](#results--key-findings) • [References](#references)
+[Overview](#overview) • [Dataset](#dataset) • [Pipeline](#pipeline) • [Upstream Analysis](#upstream-analysis-galaxy) • [Downstream Analysis](#downstream-analysis-python--scanpy) • [AnnData](#the-anndata-structure) • [References](#references)
 
 </div>
 
@@ -96,19 +96,23 @@ We utilized the **EmptyDrops** method to distinguish real cells from empty dropl
 
 The filtered Galaxy matrix was imported into Python as an **AnnData** object to leverage its multi-layered data structure.
 
-### The AnnData Structure
-This project served as an exploration of the AnnData format, which keeps metadata and raw data synchronized:
-* **`.X`**: The core gene expression count matrix.
-* **`.obs`**: Cell metadata (cluster labels, QC metrics, sample IDs).
-* **`.var`**: Gene metadata (symbols, highly variable flags).
-* **`.obsm`**: Multi-dimensional coordinates (PCA, UMAP).
-
 ### Workflow
 1. **Load & Format:** Assigned Human Gene Symbols to the matrix columns for biological interpretability.
 2. **QC Filtering:** Removed cells with fewer than 100 genes to preserve data in this smaller dataset.
 3. **Normalization:** Scaled total counts per cell and applied log transformation (`log1p`).
 4. **Dimensionality Reduction:** Computed PCA to denoise data and UMAP to visualize cell relationships in 2D space.
 5. **Annotation:** Clusters were identified via the Leiden algorithm (res 0.5) and annotated using **CellTypist** automated labeling alongside manual marker gene verification.
+
+---
+
+## The AnnData Structure
+
+This project served as an exploration of the AnnData format, which keeps metadata and raw data synchronized:
+
+* **`.X`**: The core gene expression count matrix.
+* **`.obs`**: Cell metadata (cluster labels, QC metrics, sample IDs).
+* **`.var`**: Gene metadata (symbols, highly variable flags).
+* **`.obsm`**: Multi-dimensional coordinates (PCA, UMAP).
 
 ---
 
