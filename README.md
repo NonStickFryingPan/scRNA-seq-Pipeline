@@ -149,6 +149,16 @@ This project served as an exploration of the AnnData format, which keeps metadat
 
 ---
 
+## Resources
+
+*   **Galaxy Training Network:** [Pre-processing of 10X Single-Cell RNA Datasets](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-preprocessing-tenx/tutorial.html)
+*   **Updated Scanpy Tutorial:** [Jupyter Notebook](https://github.com/tahashmi/algos/blob/main/basic-scrna-tutorial_updated.ipynb)
+*   **AnnData Documentation:** [Getting Started](https://anndata.readthedocs.io/en/latest/tutorials/notebooks/getting-started.html)
+*   **scverse AnnData Tutorial:** [ReadTheDocs](https://scverse-tutorials.readthedocs.io/en/latest/notebooks/anndata_getting_started.html)
+*   **10X Genomics Dataset:** [PBMC 1k, v3 chemistry (Zenodo)](https://zenodo.org/record/3457880)
+
+---
+
 ## References
 
 * Dobin et al. (2013). STAR: ultrafast universal RNA-seq aligner. *Bioinformatics*
