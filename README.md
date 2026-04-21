@@ -155,7 +155,7 @@ This project served as an exploration of the AnnData format, which keeps metadat
 *   **Updated Scanpy Tutorial:** [Jupyter Notebook](https://github.com/tahashmi/algos/blob/main/basic-scrna-tutorial_updated.ipynb)
 *   **AnnData Documentation:** [Getting Started](https://anndata.readthedocs.io/en/latest/tutorials/notebooks/getting-started.html)
 *   **scverse AnnData Tutorial:** [ReadTheDocs](https://scverse-tutorials.readthedocs.io/en/latest/notebooks/anndata_getting_started.html)
-*   **10X Genomics Dataset:** [PBMC 1k, v3 chemistry (Zenodo)](https://zenodo.org/record/3457880)
+*   **10X Genomics Dataset:** [Zenodo](https://zenodo.org/record/3457880)
 
 ---
 
