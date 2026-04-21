@@ -2,7 +2,7 @@
 
 # 🧫 scRNA-Seq Pipeline
 
-**Demultiplexing, alignment, and quality filtering of 10x Chromium single-cell RNA-seq data into a high-quality count matrix**
+**Alignment, quality filtering of 10x Chromium single-cell RNA-seq data into a high-quality count matrix**
 
 [![Galaxy](https://img.shields.io/badge/Workflow-Galaxy-1f6feb?style=flat-square&logo=galaxy&logoColor=white)](https://usegalaxy.org/)
 [![STARsolo](https://img.shields.io/badge/Aligner-RNA%20STARsolo-16a34a?style=flat-square)](https://github.com/alexdobin/STAR)
